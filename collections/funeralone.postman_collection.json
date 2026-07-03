@@ -1,0 +1,66 @@
+{
+  "info": {
+    "name": "funeralOne Cases API",
+    "description": "Partner integration API for funeralOne's f1Connect platform. Push funeral-case data (deceased identity, obituary, events, tribute/webcast videos, family admins) into a funeral home's f1Connect account. Base URL: https://api.funeralone.com. Auth is HTTP Basic using a funeralOne-issued API key as the username with a blank/dummy password. Access is partner-gated; contact funeralOne for an API key and per-customer AccountExternalId associations.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "basic",
+    "basic": [
+      { "key": "username", "value": "{{apiKey}}", "type": "string" },
+      { "key": "password", "value": "", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.funeralone.com", "type": "string" },
+    { "key": "apiKey", "value": "", "type": "string" },
+    { "key": "accountExternalId", "value": "", "type": "string" },
+    { "key": "caseExternalId", "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Cases",
+      "item": [
+        {
+          "name": "Create or update a case",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"AccountExternalId\": \"{{accountExternalId}}\",\n  \"CaseExternalId\": \"{{caseExternalId}}\",\n  \"FirstName\": \"Jane\",\n  \"LastName\": \"Doe\",\n  \"DisplayName\": \"Jane Doe\",\n  \"BirthDate\": \"01/01/1940\",\n  \"DeathDate\": \"06/01/2026\",\n  \"Obituary\": \"Jane Doe passed peacefully...\",\n  \"Events\": [\n    { \"Type\": \"Visitation\", \"Date\": \"06/05/2026\", \"StartTime\": \"5:00 PM\", \"EndTime\": \"8:00 PM\" },\n    { \"Type\": \"Service\", \"Date\": \"06/06/2026\", \"StartTime\": \"10:00 AM\" }\n  ],\n  \"ExternalVideoUrls\": [\n    { \"Type\": \"Tribute\", \"Url\": \"https://videos.lifetributes.com/example\" }\n  ],\n  \"FamilyAdmins\": [\"family@example.com\"]\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/cases", "host": ["{{baseUrl}}"], "path": ["cases"] },
+            "description": "Creates a new case or updates an existing one matched by AccountExternalId + CaseExternalId."
+          }
+        },
+        {
+          "name": "Retrieve all cases for an account",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cases/AccountExternalId/{{accountExternalId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["cases", "AccountExternalId", "{{accountExternalId}}"]
+            },
+            "description": "Returns all cases associated with the given funeral-home account."
+          }
+        },
+        {
+          "name": "Retrieve a specific case",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cases/AccountExternalId/{{accountExternalId}}/CaseExternalId/{{caseExternalId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["cases", "AccountExternalId", "{{accountExternalId}}", "CaseExternalId", "{{caseExternalId}}"]
+            },
+            "description": "Returns a single case identified by AccountExternalId and CaseExternalId."
+          }
+        }
+      ]
+    }
+  ]
+}

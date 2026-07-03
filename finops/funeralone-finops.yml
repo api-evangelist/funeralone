@@ -1,0 +1,88 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: funeralOne
+providerId: funeralone
+created: '2026-07-03'
+modified: '2026-07-03'
+reconciled: false
+tags:
+- Funeral Homes
+- Deathcare
+- Memorial Websites
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of funeralOne spend. funeralOne bills funeral homes on a per-home
+  subscription basis for the f1Connect website platform (commonly reported
+  around $245-$495/month plus per-case fees), with Life Tributes tribute-video
+  software, memorial webcasting, and e-commerce sold as add-on products. The
+  partner Cases API carries no separately published fee - it is an integration
+  benefit of the f1Connect platform - so for an integration partner the API
+  itself is not a metered cost line; the cost sits with the funeral-home
+  customer's f1Connect subscription and add-ons.
+notes: >-
+  Per-unit rates are not reconciled; f1Connect and Life Tributes pricing is
+  quote-based - verify with funeralOne sales. Figures are modeled from
+  third-party pricing summaries and the funeralOne site.
+sources:
+- https://www.funeralone.com/
+- https://www.funeralone.com/switch/features.php
+- https://api.funeralone.com/docs/
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: funeralOne
+serviceCategory: Web and Application Hosting
+billingModel:
+  pricingCategory: Subscription
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Purchase
+  - Usage
+focusColumns:
+  ServiceName: f1Connect
+  ServiceCategory: Web and Application Hosting
+  ProviderName: funeralOne
+  PublisherName: funeralOne
+  InvoiceIssuerName: funeralOne
+  BillingCurrency: USD
+  ChargeCategory: Purchase
+  PricingCategory: Subscription
+meters:
+- name: f1connect_subscription
+  description: Per-funeral-home monthly f1Connect website-platform subscription.
+  unit: subscriptions
+  aggregation: sum
+  dimensions:
+  - account
+- name: per_case_fee
+  description: Per-case fee charged on top of the f1Connect subscription.
+  unit: cases
+  aggregation: sum
+  dimensions:
+  - account
+- name: addons
+  description: Add-on products (Life Tributes tribute videos, memorial webcasting, e-commerce).
+  unit: products
+  aggregation: sum
+  dimensions:
+  - account
+principles:
+- name: Visibility
+  description: Track the f1Connect subscription, per-case fees, and add-on products per funeral-home account.
+- name: Allocation
+  description: Map each AccountExternalId to a funeral-home cost center; the partner Cases API is not separately metered.
+- name: Optimization
+  description: Right-size add-ons (webcasting, e-commerce) to actual family demand; consolidate multi-location homes under negotiated terms.
+- name: Accountability
+  description: Assign an owner per account; review the monthly f1Connect invoice against call volume and add-on usage.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

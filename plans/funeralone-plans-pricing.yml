@@ -1,0 +1,117 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: funeralOne
+providerId: funeralone
+created: '2026-07-03'
+modified: '2026-07-03'
+reconciled: false
+tags:
+- Funeral Homes
+- Deathcare
+- Memorial Websites
+- Life Tributes
+- Plans
+description: >-
+  funeralOne monetizes its f1Connect platform through per-funeral-home
+  subscriptions, not through the API directly. The partner Cases API is offered
+  to integration partners at no separately published fee; access is gated by a
+  funeralOne-issued API key and per-customer AccountExternalId associations
+  rather than a self-serve plan. The f1Connect website platform is commonly
+  reported around $245-$495 per month per funeral home plus per-case fees, with
+  Life Tributes tribute-video software, memorial webcasting, and e-commerce
+  priced as add-on products. Exact current tiers are quote-based and are not
+  reconciled here.
+notes: >-
+  Numbers below are honestly modeled from third-party pricing summaries and the
+  funeralOne site, not an official price sheet. Verify current f1Connect and
+  Life Tributes pricing directly with funeralOne sales. The API itself has no
+  published standalone price - it is a partner integration benefit of the
+  f1Connect platform.
+sources:
+- https://www.funeralone.com/
+- https://www.funeralone.com/switch/features.php
+- https://support.funeralone.com/life-tributes/webcasting-faqs/how-much-does-webcasting-cost/
+- https://api.funeralone.com/docs/
+plans:
+- id: funeralone-partner-api
+  name: Partner Cases API Access
+  type: partner
+  description: >-
+    Partner integration access to the Cases API. Requires an API key issued by
+    a funeralOne engineer and per-customer AccountExternalId associations. No
+    separately published fee - provided to case-management partners integrating
+    with f1Connect.
+  entries:
+  - label: API Access
+    name: api_access
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: no published standalone fee (partner-gated)
+    userMultiplied: false
+  elements:
+  - name: Cases API (create/update/retrieve)
+  - name: Auto-population of memorial website and Life Tributes
+  - name: HTTP Basic API key authentication
+- id: funeralone-f1connect
+  name: f1Connect Website Platform
+  type: subscription
+  description: >-
+    Per-funeral-home subscription for the f1Connect website and memorial
+    platform. Commonly reported around $245-$495/month plus per-case fees,
+    depending on annual call volume and features. Quote-based.
+  entries:
+  - label: Monthly Subscription (per funeral home)
+    name: f1connect_monthly
+    type: recurring
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: approx. $245-$495/month (per third-party summaries; verify with funeralOne)
+    userMultiplied: false
+  - label: Per-Case Fee
+    name: per_case_fee
+    type: usage
+    metric: cases
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: additional per-case fee (amount not published)
+    userMultiplied: false
+  elements:
+  - name: Funeral Home Website
+  - name: Memorial / Tribute Pages
+  - name: Obituary Management
+  - name: Partner API Integration
+- id: funeralone-life-tributes
+  name: Life Tributes and Add-Ons
+  type: addon
+  description: >-
+    Add-on products including Life Tributes tribute-video software, memorial
+    webcasting, and e-commerce. Priced separately from the base f1Connect
+    subscription; quote-based.
+  entries:
+  - label: Add-On Products
+    name: addons
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: quote-based (Life Tributes, webcasting, e-commerce)
+    userMultiplied: false
+  elements:
+  - name: Life Tributes Tribute Videos
+  - name: Memorial Webcasting
+  - name: Funeral E-Commerce
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,50 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: funeralOne
+providerId: funeralone
+created: '2026-07-03'
+modified: '2026-07-03'
+reconciled: false
+tags:
+- Funeral Homes
+- Deathcare
+- Partner API
+- Rate Limiting
+- Quotas
+description: >-
+  funeralOne does not publish numeric rate limits for the partner Cases API. The
+  API is partner-gated - access is provisioned per integration partner with an
+  API key and per-customer AccountExternalId associations - so throughput is
+  governed by the partner agreement and funeralOne's certification/test process
+  rather than a public per-minute request cap. In practice, case create/update
+  traffic is low-volume and event-driven (one write per At-Need case and
+  subsequent edits) rather than high-frequency.
+notes: >-
+  No fixed numeric per-account or per-endpoint limit is documented as of the
+  review date. Confirm any operational limits with funeralOne during partner
+  onboarding and API-key issuance.
+sources:
+- https://api.funeralone.com/docs/
+- https://www.funeralone.com/
+responseCodes:
+  throttled: 429
+limits:
+- name: Cases API Requests
+  scope: partner
+  metric: requests
+  limit: not published
+  notes: No fixed numeric request-rate limit is documented for the partner Cases API.
+- name: Per-Customer Scope
+  scope: account
+  metric: cases
+  limit: governed by partner agreement
+  notes: Access is scoped per AccountExternalId associated with the partner's API key.
+policies:
+- name: Partner Provisioning
+  description: Access requires a funeralOne-issued API key and per-customer AccountExternalId associations, established during partner onboarding.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor Retry-After on any 429 responses.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

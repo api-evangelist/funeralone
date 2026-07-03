@@ -1,0 +1,79 @@
+aid: funeralone
+url: https://raw.githubusercontent.com/api-evangelist/funeralone/refs/heads/main/apis.yml
+name: funeralOne
+kind: company
+description: >-
+  funeralOne is a funeral-home technology company whose f1Connect platform
+  delivers funeral-home websites, memorial/tribute pages, Life Tributes tribute
+  videos, memorial webcasting, and e-commerce for independent funeral homes.
+  funeralOne publishes a partner integration API (base https://api.funeralone.com)
+  that lets funeral-management / case-management systems push deceased, obituary,
+  service-event, tribute-video, and family-administration data into a funeral
+  home's f1Connect account so an At-Need case automatically populates the
+  memorial website and Life Tributes. The API is partner-gated - access requires
+  an API key issued by a funeralOne engineer and per-customer AccountExternalId
+  associations - and uses HTTP Basic authentication. Only the Cases resource is
+  publicly documented; the broader website, e-commerce, and webcasting products
+  are delivered through the f1Connect platform rather than a public API.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Funeral Homes
+- Deathcare
+- Obituaries
+- Tribute Videos
+- Memorial Websites
+- Life Tributes
+- Case Management
+- Partner API
+created: '2026-07-03'
+modified: '2026-07-03'
+specificationVersion: '0.19'
+apis:
+- aid: funeralone:funeralone-cases-api
+  name: funeralOne Cases API
+  tags:
+  - Cases
+  - Obituaries
+  - Events
+  - Tribute Videos
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://api.funeralone.com/docs/
+  baseURL: https://api.funeralone.com
+  properties:
+  - url: https://api.funeralone.com/docs/
+    type: Documentation
+  - url: https://api.funeralone.com/docs/
+    type: APIReference
+  - url: openapi/funeralone-openapi.yml
+    type: OpenAPI
+  - url: collections/funeralone.postman_collection.json
+    type: PostmanCollection
+  description: >-
+    Partner integration surface for pushing funeral-case data into a funeral
+    home's f1Connect account. A Case carries the deceased's identity and
+    obituary, an optional Base64 photo, serving-location and family-address
+    details, cemetery coordinates, a typed Events array (Visitation, Service,
+    Shiva, Cemetery), ExternalVideoUrls (Tribute and Webcast videos, e.g.
+    videos.lifetributes.com), and FamilyAdmins email invitations. Creating or
+    updating a case (POST /cases) automatically surfaces the deceased in the
+    memorial website and Life Tributes. Endpoints are keyed by an immutable
+    AccountExternalId (per funeral-home customer) and CaseExternalId, and
+    authenticated with HTTP Basic using a funeralOne-issued API key.
+common:
+- type: Website
+  url: https://www.funeralone.com
+- type: LinkedIn
+  url: https://www.linkedin.com/company/funeralone
+- type: Documentation
+  url: https://api.funeralone.com/docs/
+- type: Support
+  url: https://support.funeralone.com
+- type: Plans
+  url: plans/funeralone-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/funeralone-rate-limits.yml
+- type: FinOps
+  url: finops/funeralone-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

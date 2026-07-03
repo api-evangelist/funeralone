@@ -1,0 +1,300 @@
+openapi: 3.0.3
+info:
+  title: funeralOne Cases API
+  description: >-
+    Partner integration API for funeralOne's f1Connect platform. It lets a
+    funeral-management / case-management system push a funeral home's cases -
+    deceased identity, obituary, service events, tribute/webcast video URLs, and
+    family-administrator invitations - into the funeral home's f1Connect account,
+    where the data automatically populates the memorial website and Life Tributes.
+
+    Access is partner-gated: an API key is issued by a funeralOne engineer and is
+    used as the HTTP Basic username (with a blank/dummy password). Each customer
+    (funeral home) is identified by an immutable AccountExternalId that funeralOne
+    associates with your API key. This document models the publicly documented
+    Cases resource; field lists are honestly reconstructed from the funeralOne
+    developer documentation and are not an official machine-readable spec.
+  version: '1.0'
+  contact:
+    name: funeralOne
+    url: https://www.funeralone.com
+servers:
+  - url: https://api.funeralone.com
+    description: funeralOne partner API
+security:
+  - basicAuth: []
+tags:
+  - name: Cases
+    description: Create, update, and retrieve funeral cases (obituaries) for an account.
+paths:
+  /cases:
+    post:
+      operationId: createOrUpdateCase
+      tags:
+        - Cases
+      summary: Create or update a case
+      description: >-
+        Creates a new case or updates an existing one (matched by
+        AccountExternalId + CaseExternalId). Populates the deceased's obituary,
+        events, tribute videos, and family administrators in the funeral home's
+        f1Connect memorial website and Life Tributes.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Case'
+      responses:
+        '200':
+          description: Case updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Case'
+        '201':
+          description: Case created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Case'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /cases/AccountExternalId/{AccountExternalId}:
+    get:
+      operationId: listCasesForAccount
+      tags:
+        - Cases
+      summary: Retrieve all cases for an account
+      description: Returns all cases associated with the given funeral-home account.
+      parameters:
+        - $ref: '#/components/parameters/AccountExternalId'
+      responses:
+        '200':
+          description: A list of cases for the account.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Case'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /cases/AccountExternalId/{AccountExternalId}/CaseExternalId/{CaseExternalId}:
+    get:
+      operationId: getCase
+      tags:
+        - Cases
+      summary: Retrieve a specific case
+      description: Returns a single case identified by AccountExternalId and CaseExternalId.
+      parameters:
+        - $ref: '#/components/parameters/AccountExternalId'
+        - $ref: '#/components/parameters/CaseExternalId'
+      responses:
+        '200':
+          description: The requested case.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Case'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: >-
+        HTTP Basic authentication. Use the funeralOne-issued API key as the
+        username and a blank/dummy password.
+  parameters:
+    AccountExternalId:
+      name: AccountExternalId
+      in: path
+      required: true
+      description: Immutable identifier (up to 50 ASCII chars) for the funeral-home customer.
+      schema:
+        type: string
+        maxLength: 50
+    CaseExternalId:
+      name: CaseExternalId
+      in: path
+      required: true
+      description: Identifier (up to 39 chars) for the case within the account.
+      schema:
+        type: string
+        maxLength: 39
+  responses:
+    BadRequest:
+      description: The request was malformed or failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The account or case was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServerError:
+      description: An unexpected server error occurred.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Case:
+      type: object
+      description: A funeral case (obituary) for a deceased individual.
+      required:
+        - AccountExternalId
+        - CaseExternalId
+      properties:
+        AccountExternalId:
+          type: string
+          maxLength: 50
+          description: Immutable identifier for the funeral-home customer.
+        CaseExternalId:
+          type: string
+          maxLength: 39
+          description: Identifier for the case within the account.
+        HMISCaseID:
+          type: string
+          description: Optional HMIS case identifier.
+        Prefix:
+          type: string
+        FirstName:
+          type: string
+        MiddleName:
+          type: string
+        LastName:
+          type: string
+        Suffix:
+          type: string
+        DisplayName:
+          type: string
+        Gender:
+          type: string
+        BirthDate:
+          type: string
+          description: Date of birth, MM/DD/YYYY.
+        DeathDate:
+          type: string
+          description: Date of death, MM/DD/YYYY.
+        Obituary:
+          type: string
+          description: Obituary text content.
+        Picture:
+          type: string
+          format: byte
+          description: Base64-encoded JPEG portrait of the deceased.
+        ServingLocation:
+          $ref: '#/components/schemas/Location'
+        FamilyAddress:
+          $ref: '#/components/schemas/Location'
+        Cemetery:
+          $ref: '#/components/schemas/Location'
+        Events:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+        ExternalVideoUrls:
+          type: array
+          items:
+            $ref: '#/components/schemas/ExternalVideoUrl'
+        FamilyAdmins:
+          type: array
+          description: Email addresses invited to administer/moderate the memorial content.
+          items:
+            type: string
+            format: email
+    Location:
+      type: object
+      description: A named address; Cemetery locations may include coordinates.
+      properties:
+        Name:
+          type: string
+        Address1:
+          type: string
+        Address2:
+          type: string
+        City:
+          type: string
+        State:
+          type: string
+        PostalCode:
+          type: string
+        Country:
+          type: string
+        Phone:
+          type: string
+        Latitude:
+          type: number
+          format: double
+        Longitude:
+          type: number
+          format: double
+    Event:
+      type: object
+      description: A scheduled service event associated with the case.
+      properties:
+        Type:
+          type: string
+          description: Event type.
+          enum:
+            - Visitation
+            - Service
+            - Shiva
+            - Cemetery
+        Date:
+          type: string
+          description: Event date, MM/DD/YYYY.
+        EndDate:
+          type: string
+          description: End date, MM/DD/YYYY (used by Shiva events).
+        StartTime:
+          type: string
+        EndTime:
+          type: string
+        Location:
+          $ref: '#/components/schemas/Location'
+        Information:
+          type: string
+          description: Additional information (used by Shiva events).
+        Private:
+          type: boolean
+    ExternalVideoUrl:
+      type: object
+      description: A tribute or webcast video link associated with the case.
+      properties:
+        Type:
+          type: string
+          enum:
+            - Tribute
+            - Webcast
+        Url:
+          type: string
+          format: uri
+        Caption:
+          type: string
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string

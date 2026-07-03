@@ -1,0 +1,91 @@
+aid: funeralone
+name: funeralOne
+review:
+  question: Does funeralOne expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-03'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. funeralOne's documented public surface is
+    the partner Cases API - request/response REST over HTTPS with HTTP Basic
+    authentication. There is no server-push transport (WebSocket or SSE)
+    documented on funeralOne's API, and no webhook/callback mechanism is
+    described either. Data flows one direction: a partner system pushes case
+    data in via POST, and reads it back via GET. There is nothing streaming or
+    bidirectional to model.
+findings:
+  summary: |
+    funeralOne does NOT publish a documented public WebSocket API. funeralOne is
+    a funeral-home technology company; its f1Connect platform delivers
+    funeral-home websites, memorial/tribute pages, Life Tributes tribute videos,
+    memorial webcasting, and e-commerce. It exposes a real but partner-gated
+    integration API at https://api.funeralone.com (docs at
+    https://api.funeralone.com/docs/) whose only publicly documented resource is
+    Cases. The API is pure request/response REST over HTTPS, authenticated with
+    HTTP Basic using a funeralOne-issued API key (as username, blank password).
+    No realtime, bidirectional, or streaming WebSocket (ws:// or wss://) endpoint
+    is documented anywhere, and no webhook/callback is documented.
+  accessModel: |
+    Partner-gated. Access requires an API key issued by a funeralOne engineer,
+    plus per-customer AccountExternalId associations linking the partner to each
+    funeral-home account. There is no self-serve signup, no public sandbox
+    beyond the documented test-case process, and no separately published API
+    price - the API is an integration benefit of the f1Connect platform, which
+    is sold to funeral homes on a per-home subscription (commonly reported around
+    $245-$495/month plus per-case fees) with add-on products.
+  apiScope: |
+    Only the Cases resource is documented. A Case carries deceased identity and
+    obituary, an optional Base64 photo, serving-location / family-address /
+    cemetery locations (cemetery with optional lat/long), a typed Events array
+    (Visitation, Service, Shiva, Cemetery), ExternalVideoUrls (Type Tribute or
+    Webcast, e.g. videos.lifetributes.com), and FamilyAdmins email invitations.
+    The broader website, e-commerce, and webcasting products are delivered
+    through the f1Connect platform UI, not a public API. The apis.yml therefore
+    models one honest API (funeralOne Cases API) rather than fabricating separate
+    Obituaries / Websites / Orders APIs that are not documented.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.funeralone.com
+      documented: true
+      note: Partner Cases API. HTTP Basic auth with a funeralOne-issued API key.
+    - protocol: Webhook
+      scheme: https
+      documented: false
+      note: No webhook or callback mechanism is documented.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere in the funeralOne API docs as of the review date.
+  endpointsConfirmedRest:
+    - POST https://api.funeralone.com/cases
+    - GET  https://api.funeralone.com/cases/AccountExternalId/{AccountExternalId}
+    - GET  https://api.funeralone.com/cases/AccountExternalId/{AccountExternalId}/CaseExternalId/{CaseExternalId}
+  endpointsModeled: |
+    The OpenAPI in openapi/funeralone-openapi.yml models the three confirmed
+    endpoints above and reconstructs the Case object's field list from the
+    developer documentation. Field types and enum values (Event.Type,
+    ExternalVideoUrl.Type) are honestly inferred from the docs, not copied from
+    an official machine-readable spec (funeralOne does not publish one).
+sources:
+  - url: https://api.funeralone.com/docs/
+    type: Documentation
+    note: Getting Started, authentication (HTTP Basic API key), and the Cases resource. All REST. No WebSocket, no webhook.
+  - url: https://www.funeralone.com/
+    type: Website
+    note: f1Connect website platform, Life Tributes, webcasting, e-commerce for funeral homes.
+  - url: https://support.funeralone.com/
+    type: Support
+    note: Life Tributes and f1Connect product support; Life Tributes auto-shares photos/videos to the memorial website.
+  - url: https://www.funeralone.com/switch/features.php
+    type: Pricing
+    note: f1Connect platform features; per-home subscription context.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists, and funeralOne's own public API is
+    request/response REST (partner Cases API) with no server-push transport and
+    no webhook. No AsyncAPI document was created because there is nothing
+    streaming or bidirectional on funeralOne's API to model.

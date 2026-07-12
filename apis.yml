@@ -60,6 +60,10 @@ apis:
     AccountExternalId (per funeral-home customer) and CaseExternalId, and
     authenticated with HTTP Basic using a funeralOne-issued API key.
 common:
+- type: DomainSecurity
+  url: security/funeralone-domain-security.yml
+- type: Authentication
+  url: authentication/funeralone-authentication.yml
 - type: Website
   url: https://www.funeralone.com
 - type: LinkedIn

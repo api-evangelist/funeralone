@@ -60,6 +60,8 @@ apis:
     AccountExternalId (per funeral-home customer) and CaseExternalId, and
     authenticated with HTTP Basic using a funeralOne-issued API key.
 common:
+- type: AgenticAccess
+  url: agentic-access/funeralone-agentic-access.yml
 - type: DomainSecurity
   url: security/funeralone-domain-security.yml
 - type: Authentication

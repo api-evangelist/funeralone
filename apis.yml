@@ -15,7 +15,20 @@ description: >-
   associations - and uses HTTP Basic authentication. Only the Cases resource is
   publicly documented; the broader website, e-commerce, and webcasting products
   are delivered through the f1Connect platform rather than a public API.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/funeralone.png
 tags:
 - Funeral Homes
 - Deathcare
@@ -31,34 +44,20 @@ specificationVersion: '0.19'
 apis:
 - aid: funeralone:funeralone-cases-api
   name: funeralOne Cases API
-  tags:
-  - Cases
-  - Obituaries
-  - Events
-  - Tribute Videos
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  description: Create, update, and retrieve funeral cases (obituaries) for an account.
   humanURL: https://api.funeralone.com/docs/
   baseURL: https://api.funeralone.com
+  tags:
+  - Cases
   properties:
-  - url: https://api.funeralone.com/docs/
-    type: Documentation
-  - url: https://api.funeralone.com/docs/
-    type: APIReference
-  - url: openapi/funeralone-openapi.yml
-    type: OpenAPI
-  - url: collections/funeralone.postman_collection.json
-    type: PostmanCollection
-  description: >-
-    Partner integration surface for pushing funeral-case data into a funeral
-    home's f1Connect account. A Case carries the deceased's identity and
-    obituary, an optional Base64 photo, serving-location and family-address
-    details, cemetery coordinates, a typed Events array (Visitation, Service,
-    Shiva, Cemetery), ExternalVideoUrls (Tribute and Webcast videos, e.g.
-    videos.lifetributes.com), and FamilyAdmins email invitations. Creating or
-    updating a case (POST /cases) automatically surfaces the deceased in the
-    memorial website and Life Tributes. Endpoints are keyed by an immutable
-    AccountExternalId (per funeral-home customer) and CaseExternalId, and
-    authenticated with HTTP Basic using a funeralOne-issued API key.
+  - type: OpenAPI
+    url: openapi/funeralone-cases-api-openapi.yml
+  - type: Documentation
+    url: https://api.funeralone.com/docs/
+  - type: APIReference
+    url: https://api.funeralone.com/docs/
+  - type: PostmanCollection
+    url: collections/funeralone.postman_collection.json
 common:
 - type: AgenticAccess
   url: agentic-access/funeralone-agentic-access.yml

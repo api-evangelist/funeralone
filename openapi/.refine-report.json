@@ -1,0 +1,14 @@
+{
+  "provider": "funeralone",
+  "sources": [
+    "funeralone-cases-api-openapi.yml"
+  ],
+  "outputs": [
+    "funeralone-cases-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

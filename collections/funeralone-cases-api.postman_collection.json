@@ -1,0 +1,792 @@
+{
+  "item": [
+    {
+      "id": "2144557d-c53d-4bae-8a21-94635a5b3c43",
+      "name": "Cases",
+      "description": {
+        "content": "Create, update, and retrieve funeral cases (obituaries) for an account.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cf1aa836-da9e-411a-b971-9cfe82d5cab2",
+          "name": "Create or update a case",
+          "request": {
+            "name": "Create or update a case",
+            "description": {
+              "content": "Creates a new case or updates an existing one (matched by AccountExternalId + CaseExternalId). Populates the deceased's obituary, events, tribute videos, and family administrators in the funeral home's f1Connect memorial website and Life Tributes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cases"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"AccountExternalId\": \"<string>\",\n  \"CaseExternalId\": \"<string>\",\n  \"HMISCaseID\": \"<string>\",\n  \"Prefix\": \"<string>\",\n  \"FirstName\": \"<string>\",\n  \"MiddleName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Suffix\": \"<string>\",\n  \"DisplayName\": \"<string>\",\n  \"Gender\": \"<string>\",\n  \"BirthDate\": \"<string>\",\n  \"DeathDate\": \"<string>\",\n  \"Obituary\": \"<string>\",\n  \"Picture\": \"<byte>\",\n  \"ServingLocation\": {\n    \"Name\": \"<string>\",\n    \"Address1\": \"<string>\",\n    \"Address2\": \"<string>\",\n    \"City\": \"<string>\",\n    \"State\": \"<string>\",\n    \"PostalCode\": \"<string>\",\n    \"Country\": \"<string>\",\n    \"Phone\": \"<string>\",\n    \"Latitude\": \"<double>\",\n    \"Longitude\": \"<double>\"\n  },\n  \"FamilyAddress\": {\n    \"Name\": \"<string>\",\n    \"Address1\": \"<string>\",\n    \"Address2\": \"<string>\",\n    \"City\": \"<string>\",\n    \"State\": \"<string>\",\n    \"PostalCode\": \"<string>\",\n    \"Country\": \"<string>\",\n    \"Phone\": \"<string>\",\n    \"Latitude\": \"<double>\",\n    \"Longitude\": \"<double>\"\n  },\n  \"Cemetery\": {\n    \"Name\": \"<string>\",\n    \"Address1\": \"<string>\",\n    \"Address2\": \"<string>\",\n    \"City\": \"<string>\",\n    \"State\": \"<string>\",\n    \"PostalCode\": \"<string>\",\n    \"Country\": \"<string>\",\n    \"Phone\": \"<string>\",\n    \"Latitude\": \"<double>\",\n    \"Longitude\": \"<double>\"\n  },\n  \"Events\": [\n    {\n      \"Type\": \"<string>\",\n      \"Date\": \"<string>\",\n      \"EndDate\": \"<string>\",\n      \"StartTime\": \"<string>\",\n      \"EndTime\": \"<string>\",\n      \"Location\": {\n        \"Name\": \"<string>\",\n        \"Address1\": \"<string>\",\n        \"Address2\": \"<string>\",\n        \"City\": \"<string>\",\n        \"State\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Phone\": \"<string>\",\n        \"Latitude\": \"<double>\",\n        \"Longitude\": \"<double>\"\n      },\n      \"Information\": \"<string>\",\n      \"Private\": \"<boolean>\"\n    },\n    {\n      \"Type\": \"<string>\",\n      \"Date\": \"<string>\",\n      \"EndDate\": \"<string>\",\n      \"StartTime\": \"<string>\",\n      \"EndTime\": \"<string>\",\n      \"Location\": {\n        \"Name\": \"<string>\",\n        \"Address1\": \"<string>\",\n        \"Address2\": \"<string>\",\n        \"City\": \"<string>\",\n        \"State\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Phone\": \"<string>\",\n        \"Latitude\": \"<double>\",\n        \"Longitude\": \"<double>\"\n      },\n      \"Information\": \"<string>\",\n      \"Private\": \"<boolean>\"\n    }\n  ],\n  \"ExternalVideoUrls\": [\n    {\n      \"Type\": \"<string>\",\n      \"Url\": \"<uri>\",\n      \"Caption\": \"<string>\"\n    },\n    {\n      \"Type\": \"<string>\",\n      \"Url\": \"<uri>\",\n      \"Caption\": \"<string>\"\n    }\n  ],\n  \"FamilyAdmins\": [\n    \"<email>\",\n    \"<email>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2b6b4fc4-3536-47a1-a91b-d3ad920b391a",
+              "name": "Case updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AccountExternalId\": \"<string>\",\n  \"CaseExternalId\": \"<string>\",\n  \"HMISCaseID\": \"<string>\",\n  \"Prefix\": \"<string>\",\n  \"FirstName\": \"<string>\",\n  \"MiddleName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Suffix\": \"<string>\",\n  \"DisplayName\": \"<string>\",\n  \"Gender\": \"<string>\",\n  \"BirthDate\": \"<string>\",\n  \"DeathDate\": \"<string>\",\n  \"Obituary\": \"<string>\",\n  \"Picture\": \"<byte>\",\n  \"ServingLocation\": {\n    \"Name\": \"<string>\",\n    \"Address1\": \"<string>\",\n    \"Address2\": \"<string>\",\n    \"City\": \"<string>\",\n    \"State\": \"<string>\",\n    \"PostalCode\": \"<string>\",\n    \"Country\": \"<string>\",\n    \"Phone\": \"<string>\",\n    \"Latitude\": \"<double>\",\n    \"Longitude\": \"<double>\"\n  },\n  \"FamilyAddress\": {\n    \"Name\": \"<string>\",\n    \"Address1\": \"<string>\",\n    \"Address2\": \"<string>\",\n    \"City\": \"<string>\",\n    \"State\": \"<string>\",\n    \"PostalCode\": \"<string>\",\n    \"Country\": \"<string>\",\n    \"Phone\": \"<string>\",\n    \"Latitude\": \"<double>\",\n    \"Longitude\": \"<double>\"\n  },\n  \"Cemetery\": {\n    \"Name\": \"<string>\",\n    \"Address1\": \"<string>\",\n    \"Address2\": \"<string>\",\n    \"City\": \"<string>\",\n    \"State\": \"<string>\",\n    \"PostalCode\": \"<string>\",\n    \"Country\": \"<string>\",\n    \"Phone\": \"<string>\",\n    \"Latitude\": \"<double>\",\n    \"Longitude\": \"<double>\"\n  },\n  \"Events\": [\n    {\n      \"Type\": \"<string>\",\n      \"Date\": \"<string>\",\n      \"EndDate\": \"<string>\",\n      \"StartTime\": \"<string>\",\n      \"EndTime\": \"<string>\",\n      \"Location\": {\n        \"Name\": \"<string>\",\n        \"Address1\": \"<string>\",\n        \"Address2\": \"<string>\",\n        \"City\": \"<string>\",\n        \"State\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Phone\": \"<string>\",\n        \"Latitude\": \"<double>\",\n        \"Longitude\": \"<double>\"\n      },\n      \"Information\": \"<string>\",\n      \"Private\": \"<boolean>\"\n    },\n    {\n      \"Type\": \"<string>\",\n      \"Date\": \"<string>\",\n      \"EndDate\": \"<string>\",\n      \"StartTime\": \"<string>\",\n      \"EndTime\": \"<string>\",\n      \"Location\": {\n        \"Name\": \"<string>\",\n        \"Address1\": \"<string>\",\n        \"Address2\": \"<string>\",\n        \"City\": \"<string>\",\n        \"State\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Phone\": \"<string>\",\n        \"Latitude\": \"<double>\",\n        \"Longitude\": \"<double>\"\n      },\n      \"Information\": \"<string>\",\n      \"Private\": \"<boolean>\"\n    }\n  ],\n  \"ExternalVideoUrls\": [\n    {\n      \"Type\": \"<string>\",\n      \"Url\": \"<uri>\",\n      \"Caption\": \"<string>\"\n    },\n    {\n      \"Type\": \"<string>\",\n      \"Url\": \"<uri>\",\n      \"Caption\": \"<string>\"\n    }\n  ],\n  \"FamilyAdmins\": [\n    \"<email>\",\n    \"<email>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"AccountExternalId\": \"<string>\",\n  \"CaseExternalId\": \"<string>\",\n  \"HMISCaseID\": \"<string>\",\n  \"Prefix\": \"<string>\",\n  \"FirstName\": \"<string>\",\n  \"MiddleName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Suffix\": \"<string>\",\n  \"DisplayName\": \"<string>\",\n  \"Gender\": \"<string>\",\n  \"BirthDate\": \"<string>\",\n  \"DeathDate\": \"<string>\",\n  \"Obituary\": \"<string>\",\n  \"Picture\": \"<byte>\",\n  \"ServingLocation\": {\n    \"Name\": \"<string>\",\n    \"Address1\": \"<string>\",\n    \"Address2\": \"<string>\",\n    \"City\": \"<string>\",\n    \"State\": \"<string>\",\n    \"PostalCode\": \"<string>\",\n    \"Country\": \"<string>\",\n    \"Phone\": \"<string>\",\n    \"Latitude\": \"<double>\",\n    \"Longitude\": \"<double>\"\n  },\n  \"FamilyAddress\": {\n    \"Name\": \"<string>\",\n    \"Address1\": \"<string>\",\n    \"Address2\": \"<string>\",\n    \"City\": \"<string>\",\n    \"State\": \"<string>\",\n    \"PostalCode\": \"<string>\",\n    \"Country\": \"<string>\",\n    \"Phone\": \"<string>\",\n    \"Latitude\": \"<double>\",\n    \"Longitude\": \"<double>\"\n  },\n  \"Cemetery\": {\n    \"Name\": \"<string>\",\n    \"Address1\": \"<string>\",\n    \"Address2\": \"<string>\",\n    \"City\": \"<string>\",\n    \"State\": \"<string>\",\n    \"PostalCode\": \"<string>\",\n    \"Country\": \"<string>\",\n    \"Phone\": \"<string>\",\n    \"Latitude\": \"<double>\",\n    \"Longitude\": \"<double>\"\n  },\n  \"Events\": [\n    {\n      \"Type\": \"<string>\",\n      \"Date\": \"<string>\",\n      \"EndDate\": \"<string>\",\n      \"StartTime\": \"<string>\",\n      \"EndTime\": \"<string>\",\n      \"Location\": {\n        \"Name\": \"<string>\",\n        \"Address1\": \"<string>\",\n        \"Address2\": \"<string>\",\n        \"City\": \"<string>\",\n        \"State\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Phone\": \"<string>\",\n        \"Latitude\": \"<double>\",\n        \"Longitude\": \"<double>\"\n      },\n      \"Information\": \"<string>\",\n      \"Private\": \"<boolean>\"\n    },\n    {\n      \"Type\": \"<string>\",\n      \"Date\": \"<string>\",\n      \"EndDate\": \"<string>\",\n      \"StartTime\": \"<string>\",\n      \"EndTime\": \"<string>\",\n      \"Location\": {\n        \"Name\": \"<string>\",\n        \"Address1\": \"<string>\",\n        \"Address2\": \"<string>\",\n        \"City\": \"<string>\",\n        \"State\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Phone\": \"<string>\",\n        \"Latitude\": \"<double>\",\n        \"Longitude\": \"<double>\"\n      },\n      \"Information\": \"<string>\",\n      \"Private\": \"<boolean>\"\n    }\n  ],\n  \"ExternalVideoUrls\": [\n    {\n      \"Type\": \"<string>\",\n      \"Url\": \"<uri>\",\n      \"Caption\": \"<string>\"\n    },\n    {\n      \"Type\": \"<string>\",\n      \"Url\": \"<uri>\",\n      \"Caption\": \"<string>\"\n    }\n  ],\n  \"FamilyAdmins\": [\n    \"<email>\",\n    \"<email>\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3522057f-f90a-4f77-92d5-e6ddb8d3d4f5",
+              "name": "Case created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AccountExternalId\": \"<string>\",\n  \"CaseExternalId\": \"<string>\",\n  \"HMISCaseID\": \"<string>\",\n  \"Prefix\": \"<string>\",\n  \"FirstName\": \"<string>\",\n  \"MiddleName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Suffix\": \"<string>\",\n  \"DisplayName\": \"<string>\",\n  \"Gender\": \"<string>\",\n  \"BirthDate\": \"<string>\",\n  \"DeathDate\": \"<string>\",\n  \"Obituary\": \"<string>\",\n  \"Picture\": \"<byte>\",\n  \"ServingLocation\": {\n    \"Name\": \"<string>\",\n    \"Address1\": \"<string>\",\n    \"Address2\": \"<string>\",\n    \"City\": \"<string>\",\n    \"State\": \"<string>\",\n    \"PostalCode\": \"<string>\",\n    \"Country\": \"<string>\",\n    \"Phone\": \"<string>\",\n    \"Latitude\": \"<double>\",\n    \"Longitude\": \"<double>\"\n  },\n  \"FamilyAddress\": {\n    \"Name\": \"<string>\",\n    \"Address1\": \"<string>\",\n    \"Address2\": \"<string>\",\n    \"City\": \"<string>\",\n    \"State\": \"<string>\",\n    \"PostalCode\": \"<string>\",\n    \"Country\": \"<string>\",\n    \"Phone\": \"<string>\",\n    \"Latitude\": \"<double>\",\n    \"Longitude\": \"<double>\"\n  },\n  \"Cemetery\": {\n    \"Name\": \"<string>\",\n    \"Address1\": \"<string>\",\n    \"Address2\": \"<string>\",\n    \"City\": \"<string>\",\n    \"State\": \"<string>\",\n    \"PostalCode\": \"<string>\",\n    \"Country\": \"<string>\",\n    \"Phone\": \"<string>\",\n    \"Latitude\": \"<double>\",\n    \"Longitude\": \"<double>\"\n  },\n  \"Events\": [\n    {\n      \"Type\": \"<string>\",\n      \"Date\": \"<string>\",\n      \"EndDate\": \"<string>\",\n      \"StartTime\": \"<string>\",\n      \"EndTime\": \"<string>\",\n      \"Location\": {\n        \"Name\": \"<string>\",\n        \"Address1\": \"<string>\",\n        \"Address2\": \"<string>\",\n        \"City\": \"<string>\",\n        \"State\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Phone\": \"<string>\",\n        \"Latitude\": \"<double>\",\n        \"Longitude\": \"<double>\"\n      },\n      \"Information\": \"<string>\",\n      \"Private\": \"<boolean>\"\n    },\n    {\n      \"Type\": \"<string>\",\n      \"Date\": \"<string>\",\n      \"EndDate\": \"<string>\",\n      \"StartTime\": \"<string>\",\n      \"EndTime\": \"<string>\",\n      \"Location\": {\n        \"Name\": \"<string>\",\n        \"Address1\": \"<string>\",\n        \"Address2\": \"<string>\",\n        \"City\": \"<string>\",\n        \"State\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Phone\": \"<string>\",\n        \"Latitude\": \"<double>\",\n        \"Longitude\": \"<double>\"\n      },\n      \"Information\": \"<string>\",\n      \"Private\": \"<boolean>\"\n    }\n  ],\n  \"ExternalVideoUrls\": [\n    {\n      \"Type\": \"<string>\",\n      \"Url\": \"<uri>\",\n      \"Caption\": \"<string>\"\n    },\n    {\n      \"Type\": \"<string>\",\n      \"Url\": \"<uri>\",\n      \"Caption\": \"<string>\"\n    }\n  ],\n  \"FamilyAdmins\": [\n    \"<email>\",\n    \"<email>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"AccountExternalId\": \"<string>\",\n  \"CaseExternalId\": \"<string>\",\n  \"HMISCaseID\": \"<string>\",\n  \"Prefix\": \"<string>\",\n  \"FirstName\": \"<string>\",\n  \"MiddleName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Suffix\": \"<string>\",\n  \"DisplayName\": \"<string>\",\n  \"Gender\": \"<string>\",\n  \"BirthDate\": \"<string>\",\n  \"DeathDate\": \"<string>\",\n  \"Obituary\": \"<string>\",\n  \"Picture\": \"<byte>\",\n  \"ServingLocation\": {\n    \"Name\": \"<string>\",\n    \"Address1\": \"<string>\",\n    \"Address2\": \"<string>\",\n    \"City\": \"<string>\",\n    \"State\": \"<string>\",\n    \"PostalCode\": \"<string>\",\n    \"Country\": \"<string>\",\n    \"Phone\": \"<string>\",\n    \"Latitude\": \"<double>\",\n    \"Longitude\": \"<double>\"\n  },\n  \"FamilyAddress\": {\n    \"Name\": \"<string>\",\n    \"Address1\": \"<string>\",\n    \"Address2\": \"<string>\",\n    \"City\": \"<string>\",\n    \"State\": \"<string>\",\n    \"PostalCode\": \"<string>\",\n    \"Country\": \"<string>\",\n    \"Phone\": \"<string>\",\n    \"Latitude\": \"<double>\",\n    \"Longitude\": \"<double>\"\n  },\n  \"Cemetery\": {\n    \"Name\": \"<string>\",\n    \"Address1\": \"<string>\",\n    \"Address2\": \"<string>\",\n    \"City\": \"<string>\",\n    \"State\": \"<string>\",\n    \"PostalCode\": \"<string>\",\n    \"Country\": \"<string>\",\n    \"Phone\": \"<string>\",\n    \"Latitude\": \"<double>\",\n    \"Longitude\": \"<double>\"\n  },\n  \"Events\": [\n    {\n      \"Type\": \"<string>\",\n      \"Date\": \"<string>\",\n      \"EndDate\": \"<string>\",\n      \"StartTime\": \"<string>\",\n      \"EndTime\": \"<string>\",\n      \"Location\": {\n        \"Name\": \"<string>\",\n        \"Address1\": \"<string>\",\n        \"Address2\": \"<string>\",\n        \"City\": \"<string>\",\n        \"State\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Phone\": \"<string>\",\n        \"Latitude\": \"<double>\",\n        \"Longitude\": \"<double>\"\n      },\n      \"Information\": \"<string>\",\n      \"Private\": \"<boolean>\"\n    },\n    {\n      \"Type\": \"<string>\",\n      \"Date\": \"<string>\",\n      \"EndDate\": \"<string>\",\n      \"StartTime\": \"<string>\",\n      \"EndTime\": \"<string>\",\n      \"Location\": {\n        \"Name\": \"<string>\",\n        \"Address1\": \"<string>\",\n        \"Address2\": \"<string>\",\n        \"City\": \"<string>\",\n        \"State\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Phone\": \"<string>\",\n        \"Latitude\": \"<double>\",\n        \"Longitude\": \"<double>\"\n      },\n      \"Information\": \"<string>\",\n      \"Private\": \"<boolean>\"\n    }\n  ],\n  \"ExternalVideoUrls\": [\n    {\n      \"Type\": \"<string>\",\n      \"Url\": \"<uri>\",\n      \"Caption\": \"<string>\"\n    },\n    {\n      \"Type\": \"<string>\",\n      \"Url\": \"<uri>\",\n      \"Caption\": \"<string>\"\n    }\n  ],\n  \"FamilyAdmins\": [\n    \"<email>\",\n    \"<email>\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "291595b1-a623-4eb5-b301-91df6cfb7db1",
+              "name": "The request was malformed or failed validation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AccountExternalId\": \"<string>\",\n  \"CaseExternalId\": \"<string>\",\n  \"HMISCaseID\": \"<string>\",\n  \"Prefix\": \"<string>\",\n  \"FirstName\": \"<string>\",\n  \"MiddleName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Suffix\": \"<string>\",\n  \"DisplayName\": \"<string>\",\n  \"Gender\": \"<string>\",\n  \"BirthDate\": \"<string>\",\n  \"DeathDate\": \"<string>\",\n  \"Obituary\": \"<string>\",\n  \"Picture\": \"<byte>\",\n  \"ServingLocation\": {\n    \"Name\": \"<string>\",\n    \"Address1\": \"<string>\",\n    \"Address2\": \"<string>\",\n    \"City\": \"<string>\",\n    \"State\": \"<string>\",\n    \"PostalCode\": \"<string>\",\n    \"Country\": \"<string>\",\n    \"Phone\": \"<string>\",\n    \"Latitude\": \"<double>\",\n    \"Longitude\": \"<double>\"\n  },\n  \"FamilyAddress\": {\n    \"Name\": \"<string>\",\n    \"Address1\": \"<string>\",\n    \"Address2\": \"<string>\",\n    \"City\": \"<string>\",\n    \"State\": \"<string>\",\n    \"PostalCode\": \"<string>\",\n    \"Country\": \"<string>\",\n    \"Phone\": \"<string>\",\n    \"Latitude\": \"<double>\",\n    \"Longitude\": \"<double>\"\n  },\n  \"Cemetery\": {\n    \"Name\": \"<string>\",\n    \"Address1\": \"<string>\",\n    \"Address2\": \"<string>\",\n    \"City\": \"<string>\",\n    \"State\": \"<string>\",\n    \"PostalCode\": \"<string>\",\n    \"Country\": \"<string>\",\n    \"Phone\": \"<string>\",\n    \"Latitude\": \"<double>\",\n    \"Longitude\": \"<double>\"\n  },\n  \"Events\": [\n    {\n      \"Type\": \"<string>\",\n      \"Date\": \"<string>\",\n      \"EndDate\": \"<string>\",\n      \"StartTime\": \"<string>\",\n      \"EndTime\": \"<string>\",\n      \"Location\": {\n        \"Name\": \"<string>\",\n        \"Address1\": \"<string>\",\n        \"Address2\": \"<string>\",\n        \"City\": \"<string>\",\n        \"State\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Phone\": \"<string>\",\n        \"Latitude\": \"<double>\",\n        \"Longitude\": \"<double>\"\n      },\n      \"Information\": \"<string>\",\n      \"Private\": \"<boolean>\"\n    },\n    {\n      \"Type\": \"<string>\",\n      \"Date\": \"<string>\",\n      \"EndDate\": \"<string>\",\n      \"StartTime\": \"<string>\",\n      \"EndTime\": \"<string>\",\n      \"Location\": {\n        \"Name\": \"<string>\",\n        \"Address1\": \"<string>\",\n        \"Address2\": \"<string>\",\n        \"City\": \"<string>\",\n        \"State\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Phone\": \"<string>\",\n        \"Latitude\": \"<double>\",\n        \"Longitude\": \"<double>\"\n      },\n      \"Information\": \"<string>\",\n      \"Private\": \"<boolean>\"\n    }\n  ],\n  \"ExternalVideoUrls\": [\n    {\n      \"Type\": \"<string>\",\n      \"Url\": \"<uri>\",\n      \"Caption\": \"<string>\"\n    },\n    {\n      \"Type\": \"<string>\",\n      \"Url\": \"<uri>\",\n      \"Caption\": \"<string>\"\n    }\n  ],\n  \"FamilyAdmins\": [\n    \"<email>\",\n    \"<email>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2b7ccb8-322f-479f-9c0a-b436d3845284",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AccountExternalId\": \"<string>\",\n  \"CaseExternalId\": \"<string>\",\n  \"HMISCaseID\": \"<string>\",\n  \"Prefix\": \"<string>\",\n  \"FirstName\": \"<string>\",\n  \"MiddleName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Suffix\": \"<string>\",\n  \"DisplayName\": \"<string>\",\n  \"Gender\": \"<string>\",\n  \"BirthDate\": \"<string>\",\n  \"DeathDate\": \"<string>\",\n  \"Obituary\": \"<string>\",\n  \"Picture\": \"<byte>\",\n  \"ServingLocation\": {\n    \"Name\": \"<string>\",\n    \"Address1\": \"<string>\",\n    \"Address2\": \"<string>\",\n    \"City\": \"<string>\",\n    \"State\": \"<string>\",\n    \"PostalCode\": \"<string>\",\n    \"Country\": \"<string>\",\n    \"Phone\": \"<string>\",\n    \"Latitude\": \"<double>\",\n    \"Longitude\": \"<double>\"\n  },\n  \"FamilyAddress\": {\n    \"Name\": \"<string>\",\n    \"Address1\": \"<string>\",\n    \"Address2\": \"<string>\",\n    \"City\": \"<string>\",\n    \"State\": \"<string>\",\n    \"PostalCode\": \"<string>\",\n    \"Country\": \"<string>\",\n    \"Phone\": \"<string>\",\n    \"Latitude\": \"<double>\",\n    \"Longitude\": \"<double>\"\n  },\n  \"Cemetery\": {\n    \"Name\": \"<string>\",\n    \"Address1\": \"<string>\",\n    \"Address2\": \"<string>\",\n    \"City\": \"<string>\",\n    \"State\": \"<string>\",\n    \"PostalCode\": \"<string>\",\n    \"Country\": \"<string>\",\n    \"Phone\": \"<string>\",\n    \"Latitude\": \"<double>\",\n    \"Longitude\": \"<double>\"\n  },\n  \"Events\": [\n    {\n      \"Type\": \"<string>\",\n      \"Date\": \"<string>\",\n      \"EndDate\": \"<string>\",\n      \"StartTime\": \"<string>\",\n      \"EndTime\": \"<string>\",\n      \"Location\": {\n        \"Name\": \"<string>\",\n        \"Address1\": \"<string>\",\n        \"Address2\": \"<string>\",\n        \"City\": \"<string>\",\n        \"State\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Phone\": \"<string>\",\n        \"Latitude\": \"<double>\",\n        \"Longitude\": \"<double>\"\n      },\n      \"Information\": \"<string>\",\n      \"Private\": \"<boolean>\"\n    },\n    {\n      \"Type\": \"<string>\",\n      \"Date\": \"<string>\",\n      \"EndDate\": \"<string>\",\n      \"StartTime\": \"<string>\",\n      \"EndTime\": \"<string>\",\n      \"Location\": {\n        \"Name\": \"<string>\",\n        \"Address1\": \"<string>\",\n        \"Address2\": \"<string>\",\n        \"City\": \"<string>\",\n        \"State\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Phone\": \"<string>\",\n        \"Latitude\": \"<double>\",\n        \"Longitude\": \"<double>\"\n      },\n      \"Information\": \"<string>\",\n      \"Private\": \"<boolean>\"\n    }\n  ],\n  \"ExternalVideoUrls\": [\n    {\n      \"Type\": \"<string>\",\n      \"Url\": \"<uri>\",\n      \"Caption\": \"<string>\"\n    },\n    {\n      \"Type\": \"<string>\",\n      \"Url\": \"<uri>\",\n      \"Caption\": \"<string>\"\n    }\n  ],\n  \"FamilyAdmins\": [\n    \"<email>\",\n    \"<email>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "07996ace-6547-4296-b922-a9103d5eff7a",
+              "name": "An unexpected server error occurred.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cases"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"AccountExternalId\": \"<string>\",\n  \"CaseExternalId\": \"<string>\",\n  \"HMISCaseID\": \"<string>\",\n  \"Prefix\": \"<string>\",\n  \"FirstName\": \"<string>\",\n  \"MiddleName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Suffix\": \"<string>\",\n  \"DisplayName\": \"<string>\",\n  \"Gender\": \"<string>\",\n  \"BirthDate\": \"<string>\",\n  \"DeathDate\": \"<string>\",\n  \"Obituary\": \"<string>\",\n  \"Picture\": \"<byte>\",\n  \"ServingLocation\": {\n    \"Name\": \"<string>\",\n    \"Address1\": \"<string>\",\n    \"Address2\": \"<string>\",\n    \"City\": \"<string>\",\n    \"State\": \"<string>\",\n    \"PostalCode\": \"<string>\",\n    \"Country\": \"<string>\",\n    \"Phone\": \"<string>\",\n    \"Latitude\": \"<double>\",\n    \"Longitude\": \"<double>\"\n  },\n  \"FamilyAddress\": {\n    \"Name\": \"<string>\",\n    \"Address1\": \"<string>\",\n    \"Address2\": \"<string>\",\n    \"City\": \"<string>\",\n    \"State\": \"<string>\",\n    \"PostalCode\": \"<string>\",\n    \"Country\": \"<string>\",\n    \"Phone\": \"<string>\",\n    \"Latitude\": \"<double>\",\n    \"Longitude\": \"<double>\"\n  },\n  \"Cemetery\": {\n    \"Name\": \"<string>\",\n    \"Address1\": \"<string>\",\n    \"Address2\": \"<string>\",\n    \"City\": \"<string>\",\n    \"State\": \"<string>\",\n    \"PostalCode\": \"<string>\",\n    \"Country\": \"<string>\",\n    \"Phone\": \"<string>\",\n    \"Latitude\": \"<double>\",\n    \"Longitude\": \"<double>\"\n  },\n  \"Events\": [\n    {\n      \"Type\": \"<string>\",\n      \"Date\": \"<string>\",\n      \"EndDate\": \"<string>\",\n      \"StartTime\": \"<string>\",\n      \"EndTime\": \"<string>\",\n      \"Location\": {\n        \"Name\": \"<string>\",\n        \"Address1\": \"<string>\",\n        \"Address2\": \"<string>\",\n        \"City\": \"<string>\",\n        \"State\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Phone\": \"<string>\",\n        \"Latitude\": \"<double>\",\n        \"Longitude\": \"<double>\"\n      },\n      \"Information\": \"<string>\",\n      \"Private\": \"<boolean>\"\n    },\n    {\n      \"Type\": \"<string>\",\n      \"Date\": \"<string>\",\n      \"EndDate\": \"<string>\",\n      \"StartTime\": \"<string>\",\n      \"EndTime\": \"<string>\",\n      \"Location\": {\n        \"Name\": \"<string>\",\n        \"Address1\": \"<string>\",\n        \"Address2\": \"<string>\",\n        \"City\": \"<string>\",\n        \"State\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Phone\": \"<string>\",\n        \"Latitude\": \"<double>\",\n        \"Longitude\": \"<double>\"\n      },\n      \"Information\": \"<string>\",\n      \"Private\": \"<boolean>\"\n    }\n  ],\n  \"ExternalVideoUrls\": [\n    {\n      \"Type\": \"<string>\",\n      \"Url\": \"<uri>\",\n      \"Caption\": \"<string>\"\n    },\n    {\n      \"Type\": \"<string>\",\n      \"Url\": \"<uri>\",\n      \"Caption\": \"<string>\"\n    }\n  ],\n  \"FamilyAdmins\": [\n    \"<email>\",\n    \"<email>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad4ddb4c-91c8-42f0-b309-4b44efeed769",
+          "name": "Retrieve all cases for an account",
+          "request": {
+            "name": "Retrieve all cases for an account",
+            "description": {
+              "content": "Returns all cases associated with the given funeral-home account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cases",
+                "AccountExternalId",
+                ":AccountExternalId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "AccountExternalId",
+                  "description": "(Required) Immutable identifier (up to 50 ASCII chars) for the funeral-home customer."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "598732c9-32e3-4e3c-9cc3-9f804b0f06d8",
+              "name": "A list of cases for the account.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cases",
+                    "AccountExternalId",
+                    ":AccountExternalId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "AccountExternalId",
+                      "description": "(Required) Immutable identifier (up to 50 ASCII chars) for the funeral-home customer."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"AccountExternalId\": \"<string>\",\n    \"CaseExternalId\": \"<string>\",\n    \"HMISCaseID\": \"<string>\",\n    \"Prefix\": \"<string>\",\n    \"FirstName\": \"<string>\",\n    \"MiddleName\": \"<string>\",\n    \"LastName\": \"<string>\",\n    \"Suffix\": \"<string>\",\n    \"DisplayName\": \"<string>\",\n    \"Gender\": \"<string>\",\n    \"BirthDate\": \"<string>\",\n    \"DeathDate\": \"<string>\",\n    \"Obituary\": \"<string>\",\n    \"Picture\": \"<byte>\",\n    \"ServingLocation\": {\n      \"Name\": \"<string>\",\n      \"Address1\": \"<string>\",\n      \"Address2\": \"<string>\",\n      \"City\": \"<string>\",\n      \"State\": \"<string>\",\n      \"PostalCode\": \"<string>\",\n      \"Country\": \"<string>\",\n      \"Phone\": \"<string>\",\n      \"Latitude\": \"<double>\",\n      \"Longitude\": \"<double>\"\n    },\n    \"FamilyAddress\": {\n      \"Name\": \"<string>\",\n      \"Address1\": \"<string>\",\n      \"Address2\": \"<string>\",\n      \"City\": \"<string>\",\n      \"State\": \"<string>\",\n      \"PostalCode\": \"<string>\",\n      \"Country\": \"<string>\",\n      \"Phone\": \"<string>\",\n      \"Latitude\": \"<double>\",\n      \"Longitude\": \"<double>\"\n    },\n    \"Cemetery\": {\n      \"Name\": \"<string>\",\n      \"Address1\": \"<string>\",\n      \"Address2\": \"<string>\",\n      \"City\": \"<string>\",\n      \"State\": \"<string>\",\n      \"PostalCode\": \"<string>\",\n      \"Country\": \"<string>\",\n      \"Phone\": \"<string>\",\n      \"Latitude\": \"<double>\",\n      \"Longitude\": \"<double>\"\n    },\n    \"Events\": [\n      {\n        \"Type\": \"<string>\",\n        \"Date\": \"<string>\",\n        \"EndDate\": \"<string>\",\n        \"StartTime\": \"<string>\",\n        \"EndTime\": \"<string>\",\n        \"Location\": {\n          \"Name\": \"<string>\",\n          \"Address1\": \"<string>\",\n          \"Address2\": \"<string>\",\n          \"City\": \"<string>\",\n          \"State\": \"<string>\",\n          \"PostalCode\": \"<string>\",\n          \"Country\": \"<string>\",\n          \"Phone\": \"<string>\",\n          \"Latitude\": \"<double>\",\n          \"Longitude\": \"<double>\"\n        },\n        \"Information\": \"<string>\",\n        \"Private\": \"<boolean>\"\n      },\n      {\n        \"Type\": \"<string>\",\n        \"Date\": \"<string>\",\n        \"EndDate\": \"<string>\",\n        \"StartTime\": \"<string>\",\n        \"EndTime\": \"<string>\",\n        \"Location\": {\n          \"Name\": \"<string>\",\n          \"Address1\": \"<string>\",\n          \"Address2\": \"<string>\",\n          \"City\": \"<string>\",\n          \"State\": \"<string>\",\n          \"PostalCode\": \"<string>\",\n          \"Country\": \"<string>\",\n          \"Phone\": \"<string>\",\n          \"Latitude\": \"<double>\",\n          \"Longitude\": \"<double>\"\n        },\n        \"Information\": \"<string>\",\n        \"Private\": \"<boolean>\"\n      }\n    ],\n    \"ExternalVideoUrls\": [\n      {\n        \"Type\": \"<string>\",\n        \"Url\": \"<uri>\",\n        \"Caption\": \"<string>\"\n      },\n      {\n        \"Type\": \"<string>\",\n        \"Url\": \"<uri>\",\n        \"Caption\": \"<string>\"\n      }\n    ],\n    \"FamilyAdmins\": [\n      \"<email>\",\n      \"<email>\"\n    ]\n  },\n  {\n    \"AccountExternalId\": \"<string>\",\n    \"CaseExternalId\": \"<string>\",\n    \"HMISCaseID\": \"<string>\",\n    \"Prefix\": \"<string>\",\n    \"FirstName\": \"<string>\",\n    \"MiddleName\": \"<string>\",\n    \"LastName\": \"<string>\",\n    \"Suffix\": \"<string>\",\n    \"DisplayName\": \"<string>\",\n    \"Gender\": \"<string>\",\n    \"BirthDate\": \"<string>\",\n    \"DeathDate\": \"<string>\",\n    \"Obituary\": \"<string>\",\n    \"Picture\": \"<byte>\",\n    \"ServingLocation\": {\n      \"Name\": \"<string>\",\n      \"Address1\": \"<string>\",\n      \"Address2\": \"<string>\",\n      \"City\": \"<string>\",\n      \"State\": \"<string>\",\n      \"PostalCode\": \"<string>\",\n      \"Country\": \"<string>\",\n      \"Phone\": \"<string>\",\n      \"Latitude\": \"<double>\",\n      \"Longitude\": \"<double>\"\n    },\n    \"FamilyAddress\": {\n      \"Name\": \"<string>\",\n      \"Address1\": \"<string>\",\n      \"Address2\": \"<string>\",\n      \"City\": \"<string>\",\n      \"State\": \"<string>\",\n      \"PostalCode\": \"<string>\",\n      \"Country\": \"<string>\",\n      \"Phone\": \"<string>\",\n      \"Latitude\": \"<double>\",\n      \"Longitude\": \"<double>\"\n    },\n    \"Cemetery\": {\n      \"Name\": \"<string>\",\n      \"Address1\": \"<string>\",\n      \"Address2\": \"<string>\",\n      \"City\": \"<string>\",\n      \"State\": \"<string>\",\n      \"PostalCode\": \"<string>\",\n      \"Country\": \"<string>\",\n      \"Phone\": \"<string>\",\n      \"Latitude\": \"<double>\",\n      \"Longitude\": \"<double>\"\n    },\n    \"Events\": [\n      {\n        \"Type\": \"<string>\",\n        \"Date\": \"<string>\",\n        \"EndDate\": \"<string>\",\n        \"StartTime\": \"<string>\",\n        \"EndTime\": \"<string>\",\n        \"Location\": {\n          \"Name\": \"<string>\",\n          \"Address1\": \"<string>\",\n          \"Address2\": \"<string>\",\n          \"City\": \"<string>\",\n          \"State\": \"<string>\",\n          \"PostalCode\": \"<string>\",\n          \"Country\": \"<string>\",\n          \"Phone\": \"<string>\",\n          \"Latitude\": \"<double>\",\n          \"Longitude\": \"<double>\"\n        },\n        \"Information\": \"<string>\",\n        \"Private\": \"<boolean>\"\n      },\n      {\n        \"Type\": \"<string>\",\n        \"Date\": \"<string>\",\n        \"EndDate\": \"<string>\",\n        \"StartTime\": \"<string>\",\n        \"EndTime\": \"<string>\",\n        \"Location\": {\n          \"Name\": \"<string>\",\n          \"Address1\": \"<string>\",\n          \"Address2\": \"<string>\",\n          \"City\": \"<string>\",\n          \"State\": \"<string>\",\n          \"PostalCode\": \"<string>\",\n          \"Country\": \"<string>\",\n          \"Phone\": \"<string>\",\n          \"Latitude\": \"<double>\",\n          \"Longitude\": \"<double>\"\n        },\n        \"Information\": \"<string>\",\n        \"Private\": \"<boolean>\"\n      }\n    ],\n    \"ExternalVideoUrls\": [\n      {\n        \"Type\": \"<string>\",\n        \"Url\": \"<uri>\",\n        \"Caption\": \"<string>\"\n      },\n      {\n        \"Type\": \"<string>\",\n        \"Url\": \"<uri>\",\n        \"Caption\": \"<string>\"\n      }\n    ],\n    \"FamilyAdmins\": [\n      \"<email>\",\n      \"<email>\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "177c0508-41e1-480f-bc2c-5f171f26ad8f",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cases",
+                    "AccountExternalId",
+                    ":AccountExternalId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "AccountExternalId",
+                      "description": "(Required) Immutable identifier (up to 50 ASCII chars) for the funeral-home customer."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "398bb009-668f-4783-96f0-4da4d4614462",
+              "name": "The account or case was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cases",
+                    "AccountExternalId",
+                    ":AccountExternalId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "AccountExternalId",
+                      "description": "(Required) Immutable identifier (up to 50 ASCII chars) for the funeral-home customer."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ccd98e5f-cb18-4d85-abc6-435297e16c4f",
+          "name": "Retrieve a specific case",
+          "request": {
+            "name": "Retrieve a specific case",
+            "description": {
+              "content": "Returns a single case identified by AccountExternalId and CaseExternalId.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cases",
+                "AccountExternalId",
+                ":AccountExternalId",
+                "CaseExternalId",
+                ":CaseExternalId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "AccountExternalId",
+                  "description": "(Required) Immutable identifier (up to 50 ASCII chars) for the funeral-home customer."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "CaseExternalId",
+                  "description": "(Required) Identifier (up to 39 chars) for the case within the account."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5b8b98dc-b458-44a2-8343-1a259902559b",
+              "name": "The requested case.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cases",
+                    "AccountExternalId",
+                    ":AccountExternalId",
+                    "CaseExternalId",
+                    ":CaseExternalId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "AccountExternalId",
+                      "description": "(Required) Immutable identifier (up to 50 ASCII chars) for the funeral-home customer."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "CaseExternalId",
+                      "description": "(Required) Identifier (up to 39 chars) for the case within the account."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"AccountExternalId\": \"<string>\",\n  \"CaseExternalId\": \"<string>\",\n  \"HMISCaseID\": \"<string>\",\n  \"Prefix\": \"<string>\",\n  \"FirstName\": \"<string>\",\n  \"MiddleName\": \"<string>\",\n  \"LastName\": \"<string>\",\n  \"Suffix\": \"<string>\",\n  \"DisplayName\": \"<string>\",\n  \"Gender\": \"<string>\",\n  \"BirthDate\": \"<string>\",\n  \"DeathDate\": \"<string>\",\n  \"Obituary\": \"<string>\",\n  \"Picture\": \"<byte>\",\n  \"ServingLocation\": {\n    \"Name\": \"<string>\",\n    \"Address1\": \"<string>\",\n    \"Address2\": \"<string>\",\n    \"City\": \"<string>\",\n    \"State\": \"<string>\",\n    \"PostalCode\": \"<string>\",\n    \"Country\": \"<string>\",\n    \"Phone\": \"<string>\",\n    \"Latitude\": \"<double>\",\n    \"Longitude\": \"<double>\"\n  },\n  \"FamilyAddress\": {\n    \"Name\": \"<string>\",\n    \"Address1\": \"<string>\",\n    \"Address2\": \"<string>\",\n    \"City\": \"<string>\",\n    \"State\": \"<string>\",\n    \"PostalCode\": \"<string>\",\n    \"Country\": \"<string>\",\n    \"Phone\": \"<string>\",\n    \"Latitude\": \"<double>\",\n    \"Longitude\": \"<double>\"\n  },\n  \"Cemetery\": {\n    \"Name\": \"<string>\",\n    \"Address1\": \"<string>\",\n    \"Address2\": \"<string>\",\n    \"City\": \"<string>\",\n    \"State\": \"<string>\",\n    \"PostalCode\": \"<string>\",\n    \"Country\": \"<string>\",\n    \"Phone\": \"<string>\",\n    \"Latitude\": \"<double>\",\n    \"Longitude\": \"<double>\"\n  },\n  \"Events\": [\n    {\n      \"Type\": \"<string>\",\n      \"Date\": \"<string>\",\n      \"EndDate\": \"<string>\",\n      \"StartTime\": \"<string>\",\n      \"EndTime\": \"<string>\",\n      \"Location\": {\n        \"Name\": \"<string>\",\n        \"Address1\": \"<string>\",\n        \"Address2\": \"<string>\",\n        \"City\": \"<string>\",\n        \"State\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Phone\": \"<string>\",\n        \"Latitude\": \"<double>\",\n        \"Longitude\": \"<double>\"\n      },\n      \"Information\": \"<string>\",\n      \"Private\": \"<boolean>\"\n    },\n    {\n      \"Type\": \"<string>\",\n      \"Date\": \"<string>\",\n      \"EndDate\": \"<string>\",\n      \"StartTime\": \"<string>\",\n      \"EndTime\": \"<string>\",\n      \"Location\": {\n        \"Name\": \"<string>\",\n        \"Address1\": \"<string>\",\n        \"Address2\": \"<string>\",\n        \"City\": \"<string>\",\n        \"State\": \"<string>\",\n        \"PostalCode\": \"<string>\",\n        \"Country\": \"<string>\",\n        \"Phone\": \"<string>\",\n        \"Latitude\": \"<double>\",\n        \"Longitude\": \"<double>\"\n      },\n      \"Information\": \"<string>\",\n      \"Private\": \"<boolean>\"\n    }\n  ],\n  \"ExternalVideoUrls\": [\n    {\n      \"Type\": \"<string>\",\n      \"Url\": \"<uri>\",\n      \"Caption\": \"<string>\"\n    },\n    {\n      \"Type\": \"<string>\",\n      \"Url\": \"<uri>\",\n      \"Caption\": \"<string>\"\n    }\n  ],\n  \"FamilyAdmins\": [\n    \"<email>\",\n    \"<email>\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "82e38627-fe8e-46bf-8257-3b1abe2defa1",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cases",
+                    "AccountExternalId",
+                    ":AccountExternalId",
+                    "CaseExternalId",
+                    ":CaseExternalId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "AccountExternalId",
+                      "description": "(Required) Immutable identifier (up to 50 ASCII chars) for the funeral-home customer."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "CaseExternalId",
+                      "description": "(Required) Identifier (up to 39 chars) for the case within the account."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd7fa272-077b-444e-a2e8-3952c8c87bde",
+              "name": "The account or case was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cases",
+                    "AccountExternalId",
+                    ":AccountExternalId",
+                    "CaseExternalId",
+                    ":CaseExternalId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "AccountExternalId",
+                      "description": "(Required) Immutable identifier (up to 50 ASCII chars) for the funeral-home customer."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "CaseExternalId",
+                      "description": "(Required) Identifier (up to 39 chars) for the case within the account."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.funeralone.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4dc08417-22e3-491b-ad35-349e64ab1f7c",
+    "name": "funeralOne Cases API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Partner integration API for funeralOne's f1Connect platform. It lets a funeral-management / case-management system push a funeral home's cases - deceased identity, obituary, service events, tribute/webcast video URLs, and family-administrator invitations - into the funeral home's f1Connect account, where the data automatically populates the memorial website and Life Tributes.\nAccess is partner-gated: an API key is issued by a funeralOne engineer and is used as the HTTP Basic username (with a blank/dummy password). Each customer (funeral home) is identified by an immutable AccountExternalId that funeralOne associates with your API key. This document models the publicly documented Cases resource; field lists are honestly reconstructed from the funeralOne developer documentation and are not an official machine-readable spec.\n\nContact Support:\n Name: funeralOne",
+      "type": "text/plain"
+    }
+  }
+}

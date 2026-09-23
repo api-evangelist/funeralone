@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: funeralOne Cases API
-  description: 'Partner integration API for funeralOne''s f1Connect platform. It lets a funeral-management / case-management system push a funeral home''s cases - deceased identity, obituary, service events, tribute/webcast video URLs, and family-administrator invitations - into the funeral home''s f1Connect account, where the data automatically populates the memorial website and Life Tributes.
-
-    Access is partner-gated: an API key is issued by a funeralOne engineer and is used as the HTTP Basic username (with a blank/dummy password). Each customer (funeral home) is identified by an immutable AccountExternalId that funeralOne associates with your API key. This document models the publicly documented Cases resource; field lists are honestly reconstructed from the funeralOne developer documentation and are not an official machine-readable spec.'
+  description: Partner integration API for funeralOne's f1Connect platform.
   version: '1.0'
   contact:
     name: funeralOne
@@ -93,48 +91,6 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    CaseExternalId:
-      name: CaseExternalId
-      in: path
-      required: true
-      description: Identifier (up to 39 chars) for the case within the account.
-      schema:
-        type: string
-        maxLength: 39
-    AccountExternalId:
-      name: AccountExternalId
-      in: path
-      required: true
-      description: Immutable identifier (up to 50 ASCII chars) for the funeral-home customer.
-      schema:
-        type: string
-        maxLength: 50
-  responses:
-    ServerError:
-      description: An unexpected server error occurred.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Missing or invalid API key.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request was malformed or failed validation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The account or case was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     Error:
       type: object
@@ -143,6 +99,46 @@ components:
           type: string
         message:
           type: string
+    ExternalVideoUrl:
+      type: object
+      description: A tribute or webcast video link associated with the case.
+      properties:
+        Type:
+          type: string
+          enum:
+          - Tribute
+          - Webcast
+        Url:
+          type: string
+          format: uri
+        Caption:
+          type: string
+    Location:
+      type: object
+      description: A named address; Cemetery locations may include coordinates.
+      properties:
+        Name:
+          type: string
+        Address1:
+          type: string
+        Address2:
+          type: string
+        City:
+          type: string
+        State:
+          type: string
+        PostalCode:
+          type: string
+        Country:
+          type: string
+        Phone:
+          type: string
+        Latitude:
+          type: number
+          format: double
+        Longitude:
+          type: number
+          format: double
     Case:
       type: object
       description: A funeral case (obituary) for a deceased individual.
@@ -208,20 +204,6 @@ components:
           items:
             type: string
             format: email
-    ExternalVideoUrl:
-      type: object
-      description: A tribute or webcast video link associated with the case.
-      properties:
-        Type:
-          type: string
-          enum:
-          - Tribute
-          - Webcast
-        Url:
-          type: string
-          format: uri
-        Caption:
-          type: string
     Event:
       type: object
       description: A scheduled service event associated with the case.
@@ -251,32 +233,48 @@ components:
           description: Additional information (used by Shiva events).
         Private:
           type: boolean
-    Location:
-      type: object
-      description: A named address; Cemetery locations may include coordinates.
-      properties:
-        Name:
-          type: string
-        Address1:
-          type: string
-        Address2:
-          type: string
-        City:
-          type: string
-        State:
-          type: string
-        PostalCode:
-          type: string
-        Country:
-          type: string
-        Phone:
-          type: string
-        Latitude:
-          type: number
-          format: double
-        Longitude:
-          type: number
-          format: double
+  parameters:
+    CaseExternalId:
+      name: CaseExternalId
+      in: path
+      required: true
+      description: Identifier (up to 39 chars) for the case within the account.
+      schema:
+        type: string
+        maxLength: 39
+    AccountExternalId:
+      name: AccountExternalId
+      in: path
+      required: true
+      description: Immutable identifier (up to 50 ASCII chars) for the funeral-home customer.
+      schema:
+        type: string
+        maxLength: 50
+  responses:
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request was malformed or failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServerError:
+      description: An unexpected server error occurred.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The account or case was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http

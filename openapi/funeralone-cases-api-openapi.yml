@@ -99,20 +99,6 @@ components:
           type: string
         message:
           type: string
-    ExternalVideoUrl:
-      type: object
-      description: A tribute or webcast video link associated with the case.
-      properties:
-        Type:
-          type: string
-          enum:
-          - Tribute
-          - Webcast
-        Url:
-          type: string
-          format: uri
-        Caption:
-          type: string
     Location:
       type: object
       description: A named address; Cemetery locations may include coordinates.
@@ -139,6 +125,20 @@ components:
         Longitude:
           type: number
           format: double
+    ExternalVideoUrl:
+      type: object
+      description: A tribute or webcast video link associated with the case.
+      properties:
+        Type:
+          type: string
+          enum:
+          - Tribute
+          - Webcast
+        Url:
+          type: string
+          format: uri
+        Caption:
+          type: string
     Case:
       type: object
       description: A funeral case (obituary) for a deceased individual.
@@ -233,6 +233,31 @@ components:
           description: Additional information (used by Shiva events).
         Private:
           type: boolean
+  responses:
+    ServerError:
+      description: An unexpected server error occurred.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The account or case was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request was malformed or failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     CaseExternalId:
       name: CaseExternalId
@@ -250,31 +275,6 @@ components:
       schema:
         type: string
         maxLength: 50
-  responses:
-    Unauthorized:
-      description: Missing or invalid API key.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request was malformed or failed validation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    ServerError:
-      description: An unexpected server error occurred.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The account or case was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http

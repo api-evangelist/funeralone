@@ -91,6 +91,31 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    ServerError:
+      description: An unexpected server error occurred.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: The request was malformed or failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The account or case was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
     Error:
       type: object
@@ -99,6 +124,35 @@ components:
           type: string
         message:
           type: string
+    Event:
+      type: object
+      description: A scheduled service event associated with the case.
+      properties:
+        Type:
+          type: string
+          description: Event type.
+          enum:
+          - Visitation
+          - Service
+          - Shiva
+          - Cemetery
+        Date:
+          type: string
+          description: Event date, MM/DD/YYYY.
+        EndDate:
+          type: string
+          description: End date, MM/DD/YYYY (used by Shiva events).
+        StartTime:
+          type: string
+        EndTime:
+          type: string
+        Location:
+          $ref: '#/components/schemas/Location'
+        Information:
+          type: string
+          description: Additional information (used by Shiva events).
+        Private:
+          type: boolean
     Location:
       type: object
       description: A named address; Cemetery locations may include coordinates.
@@ -204,69 +258,7 @@ components:
           items:
             type: string
             format: email
-    Event:
-      type: object
-      description: A scheduled service event associated with the case.
-      properties:
-        Type:
-          type: string
-          description: Event type.
-          enum:
-          - Visitation
-          - Service
-          - Shiva
-          - Cemetery
-        Date:
-          type: string
-          description: Event date, MM/DD/YYYY.
-        EndDate:
-          type: string
-          description: End date, MM/DD/YYYY (used by Shiva events).
-        StartTime:
-          type: string
-        EndTime:
-          type: string
-        Location:
-          $ref: '#/components/schemas/Location'
-        Information:
-          type: string
-          description: Additional information (used by Shiva events).
-        Private:
-          type: boolean
-  responses:
-    ServerError:
-      description: An unexpected server error occurred.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Missing or invalid API key.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The account or case was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request was malformed or failed validation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
-    CaseExternalId:
-      name: CaseExternalId
-      in: path
-      required: true
-      description: Identifier (up to 39 chars) for the case within the account.
-      schema:
-        type: string
-        maxLength: 39
     AccountExternalId:
       name: AccountExternalId
       in: path
@@ -275,6 +267,14 @@ components:
       schema:
         type: string
         maxLength: 50
+    CaseExternalId:
+      name: CaseExternalId
+      in: path
+      required: true
+      description: Identifier (up to 39 chars) for the case within the account.
+      schema:
+        type: string
+        maxLength: 39
   securitySchemes:
     basicAuth:
       type: http

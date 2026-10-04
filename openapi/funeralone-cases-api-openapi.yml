@@ -91,39 +91,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    ServerError:
-      description: An unexpected server error occurred.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: The request was malformed or failed validation.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The account or case was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Missing or invalid API key.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      type: object
-      properties:
-        code:
-          type: string
-        message:
-          type: string
     Event:
       type: object
       description: A scheduled service event associated with the case.
@@ -153,46 +121,6 @@ components:
           description: Additional information (used by Shiva events).
         Private:
           type: boolean
-    Location:
-      type: object
-      description: A named address; Cemetery locations may include coordinates.
-      properties:
-        Name:
-          type: string
-        Address1:
-          type: string
-        Address2:
-          type: string
-        City:
-          type: string
-        State:
-          type: string
-        PostalCode:
-          type: string
-        Country:
-          type: string
-        Phone:
-          type: string
-        Latitude:
-          type: number
-          format: double
-        Longitude:
-          type: number
-          format: double
-    ExternalVideoUrl:
-      type: object
-      description: A tribute or webcast video link associated with the case.
-      properties:
-        Type:
-          type: string
-          enum:
-          - Tribute
-          - Webcast
-        Url:
-          type: string
-          format: uri
-        Caption:
-          type: string
     Case:
       type: object
       description: A funeral case (obituary) for a deceased individual.
@@ -258,15 +186,79 @@ components:
           items:
             type: string
             format: email
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    Location:
+      type: object
+      description: A named address; Cemetery locations may include coordinates.
+      properties:
+        Name:
+          type: string
+        Address1:
+          type: string
+        Address2:
+          type: string
+        City:
+          type: string
+        State:
+          type: string
+        PostalCode:
+          type: string
+        Country:
+          type: string
+        Phone:
+          type: string
+        Latitude:
+          type: number
+          format: double
+        Longitude:
+          type: number
+          format: double
+    ExternalVideoUrl:
+      type: object
+      description: A tribute or webcast video link associated with the case.
+      properties:
+        Type:
+          type: string
+          enum:
+          - Tribute
+          - Webcast
+        Url:
+          type: string
+          format: uri
+        Caption:
+          type: string
+  responses:
+    BadRequest:
+      description: The request was malformed or failed validation.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The account or case was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServerError:
+      description: An unexpected server error occurred.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Missing or invalid API key.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
-    AccountExternalId:
-      name: AccountExternalId
-      in: path
-      required: true
-      description: Immutable identifier (up to 50 ASCII chars) for the funeral-home customer.
-      schema:
-        type: string
-        maxLength: 50
     CaseExternalId:
       name: CaseExternalId
       in: path
@@ -275,6 +267,14 @@ components:
       schema:
         type: string
         maxLength: 39
+    AccountExternalId:
+      name: AccountExternalId
+      in: path
+      required: true
+      description: Immutable identifier (up to 50 ASCII chars) for the funeral-home customer.
+      schema:
+        type: string
+        maxLength: 50
   securitySchemes:
     basicAuth:
       type: http

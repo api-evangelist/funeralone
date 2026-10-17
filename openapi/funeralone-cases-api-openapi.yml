@@ -91,7 +91,50 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    CaseExternalId:
+      name: CaseExternalId
+      in: path
+      required: true
+      description: Identifier (up to 39 chars) for the case within the account.
+      schema:
+        type: string
+        maxLength: 39
+    AccountExternalId:
+      name: AccountExternalId
+      in: path
+      required: true
+      description: Immutable identifier (up to 50 ASCII chars) for the funeral-home customer.
+      schema:
+        type: string
+        maxLength: 50
   schemas:
+    Location:
+      type: object
+      description: A named address; Cemetery locations may include coordinates.
+      properties:
+        Name:
+          type: string
+        Address1:
+          type: string
+        Address2:
+          type: string
+        City:
+          type: string
+        State:
+          type: string
+        PostalCode:
+          type: string
+        Country:
+          type: string
+        Phone:
+          type: string
+        Latitude:
+          type: number
+          format: double
+        Longitude:
+          type: number
+          format: double
     Event:
       type: object
       description: A scheduled service event associated with the case.
@@ -193,32 +236,6 @@ components:
           type: string
         message:
           type: string
-    Location:
-      type: object
-      description: A named address; Cemetery locations may include coordinates.
-      properties:
-        Name:
-          type: string
-        Address1:
-          type: string
-        Address2:
-          type: string
-        City:
-          type: string
-        State:
-          type: string
-        PostalCode:
-          type: string
-        Country:
-          type: string
-        Phone:
-          type: string
-        Latitude:
-          type: number
-          format: double
-        Longitude:
-          type: number
-          format: double
     ExternalVideoUrl:
       type: object
       description: A tribute or webcast video link associated with the case.
@@ -234,8 +251,8 @@ components:
         Caption:
           type: string
   responses:
-    BadRequest:
-      description: The request was malformed or failed validation.
+    ServerError:
+      description: An unexpected server error occurred.
       content:
         application/json:
           schema:
@@ -246,8 +263,8 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    ServerError:
-      description: An unexpected server error occurred.
+    BadRequest:
+      description: The request was malformed or failed validation.
       content:
         application/json:
           schema:
@@ -258,23 +275,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  parameters:
-    CaseExternalId:
-      name: CaseExternalId
-      in: path
-      required: true
-      description: Identifier (up to 39 chars) for the case within the account.
-      schema:
-        type: string
-        maxLength: 39
-    AccountExternalId:
-      name: AccountExternalId
-      in: path
-      required: true
-      description: Immutable identifier (up to 50 ASCII chars) for the funeral-home customer.
-      schema:
-        type: string
-        maxLength: 50
   securitySchemes:
     basicAuth:
       type: http

@@ -1,4 +1,4 @@
-# funeralOne (funeralone)
+# funeralOne
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,72 +64,116 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-funeralOne is a funeral-home technology company whose **f1Connect** platform delivers funeral-home websites, memorial/tribute pages, **Life Tributes** tribute videos, memorial webcasting, and e-commerce for independent funeral homes. funeralOne publishes a real but **partner-gated** integration API at `https://api.funeralone.com` (docs at [api.funeralone.com/docs](https://api.funeralone.com/docs/)) that lets funeral-management / case-management systems push deceased, obituary, service-event, tribute-video, and family-administration data into a funeral home's f1Connect account, where it automatically populates the memorial website and Life Tributes.
+funeralOne is a funeral-home technology company whose f1Connect platform delivers funeral-home websites, memorial/tribute pages, Life Tributes tribute videos, memorial webcasting, and e-commerce for independent funeral homes. funeralOne publishes a partner integration API (base https://api.funeralone.com) that lets funeral-management / case-management systems push deceased, obituary, service-event, tribute-video, and family-administration data into a funeral home's f1Connect account so an At-Need case automatically populates the memorial website and Life Tributes. The API is partner-gated - access requires an API key issued by a funeralOne engineer and per-customer AccountExternalId associations - and uses HTTP Basic authentication. Only the Cases resource is publicly documented; the broader website, e-commerce, and webcasting products are delivered through the f1Connect platform rather than a public API.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/funeralone/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/funeralone/refs/heads/main/apis.yml)
+**Areas:** Funeral Homes · Death Care · Obituaries · Tribute Videos · Memorial Websites · Life Tributes · Case Management · Partner API
 
-## Access Model (important)
+## funeralOne on APIs.io
 
-This API is **not self-serve**. Access is provisioned per integration partner:
+Everything profiled for funeralOne is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/funeralone/](https://apis.io/providers/funeralone/)** — or go straight to one of the APIs or properties below.
 
-- Authentication is **HTTP Basic**: the funeralOne-issued **API key** is the username, with a blank/dummy password.
-- Each funeral-home customer is identified by an immutable **AccountExternalId** that funeralOne associates with your API key.
-- Onboarding involves requesting an API key, supplying a test AccountExternalId, getting a test f1Connect account set up, submitting test cases, and having funeralOne associate customer accounts with your key.
-- There is **no separately published API price** - the API is an integration benefit of the f1Connect platform, which is sold to funeral homes on a per-home subscription (commonly reported around **$245-$495/month plus per-case fees**) with add-on products (Life Tributes, webcasting, e-commerce).
+### APIs (1)
 
-Only the **Cases** resource is publicly documented. The broader website, e-commerce, and webcasting products are delivered through the f1Connect platform UI rather than a public API, so this catalog models **one honest API** (the Cases API) rather than fabricating separate Obituaries / Websites / Orders APIs that funeralOne does not document.
+- [funeralOne Cases API](https://apis.io/apis/funeralone/funeralone-cases-api/) — Create, update, and retrieve funeral cases (obituaries) for an account.
 
-## Tags
+### Published properties
 
-- Funeral Homes
-- Deathcare
-- Obituaries
-- Tribute Videos
-- Memorial Websites
-- Life Tributes
-- Case Management
-- Partner API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## Timestamps
+#### Agentic access (1)
 
-- **Created:** 2026-07-03
-- **Modified:** 2026-07-03
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## APIs
+- [Funeralone Agentic Access](https://apis.io/agentic-access/funeralone/funeralone-agentic-access/)
 
-### funeralOne Cases API
+#### Collections (1)
 
-Partner integration surface for pushing funeral-case data into a funeral home's f1Connect account. A **Case** carries the deceased's identity and obituary, an optional Base64 photo, serving-location and family-address details, cemetery coordinates, a typed **Events** array (Visitation, Service, Shiva, Cemetery), **ExternalVideoUrls** (Tribute and Webcast videos, e.g. `videos.lifetributes.com`), and **FamilyAdmins** email invitations. Creating or updating a case automatically surfaces the deceased in the memorial website and Life Tributes.
+Postman and Open Collection request collections.
 
-- **Human URL:** [https://api.funeralone.com/docs/](https://api.funeralone.com/docs/)
-- **Base URL:** `https://api.funeralone.com`
+- [funeralOne Cases API](https://apis.io/collections/funeralone/open-funeralone-cases-api/)
 
-#### Endpoints
+#### Security (2)
 
-- `POST /cases` — create or update a case
-- `GET /cases/AccountExternalId/{AccountExternalId}` — retrieve all cases for an account
-- `GET /cases/AccountExternalId/{AccountExternalId}/CaseExternalId/{CaseExternalId}` — retrieve a specific case
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Properties
+- [Funeralone Authentication](https://apis.io/security/funeralone/funeralone-authentication/)
+- [Funeralone Domain Security](https://apis.io/security/funeralone/funeralone-domain-security/)
 
-- [Documentation](https://api.funeralone.com/docs/)
-- [API Reference](https://api.funeralone.com/docs/)
-- [OpenAPI](openapi/funeralone-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/funeralone.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+#### Plans and pricing (1)
 
-The OpenAPI models the three confirmed endpoints and reconstructs the Case object's fields from the developer documentation; funeralOne does not publish an official machine-readable spec, so field types and enum values are honestly inferred.
+Published plans, tiers and prices.
 
-## Common Properties
+- [Funeralone Plans Pricing](https://apis.io/plans/funeralone/funeralone-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Funeralone Rate Limits](https://apis.io/rate-limits/funeralone/funeralone-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Funeralone Finops](https://apis.io/finops/funeralone/funeralone-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.funeralone.com)
-- [LinkedIn](https://www.linkedin.com/company/funeralone)
 - [Documentation](https://api.funeralone.com/docs/)
 - [Support](https://support.funeralone.com)
-- [Plans](plans/funeralone-plans-pricing.yml)
-- [Rate Limits](rate-limits/funeralone-rate-limits.yml)
-- [Fin Ops](finops/funeralone-finops.yml)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 29.8** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 52.0 |
+| Contract governance | 0.0 |
+| Operational transparency | 5.3 |
+| Developer ergonomics | 34.5 |
+| Access clarity | 7.9 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/funeralone/](https://apis.io/providers/funeralone/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for funeralOne: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/funeralone/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
